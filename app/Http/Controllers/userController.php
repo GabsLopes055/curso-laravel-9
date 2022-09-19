@@ -7,12 +7,17 @@ use Illuminate\Http\Request;
 
 class userController extends Controller
 {
-    public function index()
+    public function index() {
+
+        return view('index');
+    }
+
+    public function listAll()
     {
 
         $users = User::get();
 
-        return view('users.index', ['users' => $users]);
+        return view('users.listUser', ['users' => $users]);
     }
 
     public function show($id)
@@ -24,12 +29,16 @@ class userController extends Controller
         
 
         if (!$users = User::find($id)) {
-            return redirect()->route('users.index', ['erro' => $erro]);
+            return redirect()->route('users.listAll', ['erro' => $erro]);
         } else {           
             return view('users.show', ['users' => $users]);
         }
 
 
         dd($users);
+    }
+
+    public function create() {
+        return view('users.create');
     }
 }

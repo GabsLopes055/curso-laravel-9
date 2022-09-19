@@ -5,11 +5,8 @@ use App\Http\Controllers\{
 };
 use Illuminate\Support\Facades\Route;
 
+Route::get('/create',[userController::class, 'create'])->name('users.create');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-Route::get('/users', [userController::class, 'index'])->name('users.index');
+Route::get('/', [userController::class, 'index'])->name('index');
+Route::get('/users', [userController::class, 'listAll'])->name('users.listAll');
 Route::get('/users/{id}', [userController::class, 'show'])->name('users.show');

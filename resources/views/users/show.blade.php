@@ -1,6 +1,6 @@
-@extends('layouts.app');
+@extends('layouts.app')
 
-@section('title', 'Listagem de usuário');
+@section('title', 'Listagem de usuário')
 
 @section('content')
     <h1 class="text-center">Detalhes do Usuário {{ $users->name }}</h1>
@@ -28,6 +28,6 @@
         </tbody>
     </table>
     <div class="text-center">
-        <a href="{{ route('users.index') }}"><button class="btn btn-primary">Voltar</button></a>
+        <a href="{{ route('users.listAll') }}"><button class="btn btn-primary">Voltar</button></a>
     </div>
 @endsection

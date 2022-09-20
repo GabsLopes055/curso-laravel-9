@@ -22,7 +22,7 @@
                 <td>{{ $users->email }}</td>
                 <td>{{ $users->created_at }}</td>
                 <td><a href="{{ route('users.show', ['id' => $users->id]) }}"><button
-                            class="btn btn-outline-warning">Editar</button></a></td>
+                            class="btn btn-warning">Editar</button></a></td>
 
             </tr>
         </tbody>

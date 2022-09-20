@@ -41,4 +41,8 @@ class userController extends Controller
     public function create() {
         return view('users.create');
     }
+
+    public function store() {
+        dd('cadastrando');
+    }
 }

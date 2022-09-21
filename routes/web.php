@@ -6,6 +6,8 @@ use App\Http\Controllers\{
 use App\Http\Controllers\login\loginController;
 use Illuminate\Support\Facades\Route;
 
+Route::put('/users/edit', [userController::class, 'update'])->name('users.update');
+Route::get('/users/{id}/edit', [userController::class, 'edit'])->name('users.edit');
 Route::get('/users/create',[userController::class, 'create'])->name('users.create');
 Route::post('/users/store', [userController::class, 'store'])->name('users.store');
 

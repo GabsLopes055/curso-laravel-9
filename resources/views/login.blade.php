@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="text-center" style="margin-top: 10%;">
+    <div class="text-center mt-5">
         <svg style="height: 250px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             data-name="Layer 1" width="698" height="698" viewBox="0 0 698 698">
             <defs>

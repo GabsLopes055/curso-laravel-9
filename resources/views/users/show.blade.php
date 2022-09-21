@@ -12,7 +12,6 @@
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Criado</th>
-                <th>Editar</th>
             </tr>
         </thead>
         <tbody>
@@ -21,9 +20,6 @@
                 <td>{{ $users->name }}</td>
                 <td>{{ $users->email }}</td>
                 <td>{{ $users->created_at }}</td>
-                <td><a href="{{ route('users.show', ['id' => $users->id]) }}"><button
-                            class="btn btn-warning">Editar</button></a></td>
-
             </tr>
         </tbody>
     </table>

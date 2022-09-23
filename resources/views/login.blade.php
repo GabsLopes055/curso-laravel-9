@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="text-center mt-5">
-        <svg style="height: 250px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        <svg style="height: 250px; width: 100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             data-name="Layer 1" width="698" height="698" viewBox="0 0 698 698">
             <defs>
                 <linearGradient id="b247946c-c62f-4d08-994a-4c3d64e1e98f-441" x1="349" y1="698" x2="349"
@@ -57,7 +57,7 @@
                         <input class="form-control w-25 text-center" type="password" name="password" id="password"
                             placeholder="Informe sua senha">
                     </div>
-                    <button class="btn btn-success mb-4 w-25">Acessar &nbsp;<img src="https://img.icons8.com/material/24/000000/enter-2--v1.png"/></button>
+                    <button class="btn btn-success mb-4 w-25">Acessar</button>
                 </div>
             </div>
         </form>

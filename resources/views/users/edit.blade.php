@@ -16,9 +16,10 @@
             </ul>
         @endif()
         <div class="card mt-4">
-            <form action="#" method="post">
+            <form action="{{ route('users.update', $user->id) }}" method="post">
                 <div class="w-50 h-50 m-auto mt-5">
                     <div class="mt-3">
+                        @method('PUT')
                         @csrf
                         <h5 for="form-label">Nome Completo</h5>
                         <div class="d-flex justify-content-center">

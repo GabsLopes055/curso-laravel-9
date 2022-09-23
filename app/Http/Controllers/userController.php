@@ -12,14 +12,13 @@ class userController extends Controller
 {
     public function index()
     {
-        notify()->success('Teste', 'Titulo');
         return view('index');
     }
 
-    public function listAll()
+    public function listAll(Request $request)
     {
-
         $users = User::get();
+        dd($request->search);
 
         return view('users.listUser', ['users' => $users]);
     }
@@ -53,7 +52,7 @@ class userController extends Controller
         $data['password'] = bcrypt($request->password);
 
         User::create($data);
-
+        notify()->success('Usuário Cadastrado', 'Novo Usuário');
         return redirect()->route('users.listAll');
         // $user = new User;
         // $user->name = $request->name;
@@ -72,9 +71,52 @@ class userController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(StoreUpdateUser $request, $id)
     {
+        if (!$user = User::find($id)) {
+            notify()->error('Error', 'Usuário não encontrado');
+            return redirect()->route('users.listAll');
+        } else {
+            $data = $request->only('name', 'email');
+            if ($request->password) {
+                $data['password'] = bcrypt($request->password);
+            } else {
+                if ($user->update($data)) {
+                    notify()->warning('Usuário editado com sucesso !', 'Usuário Editado');
+                    return redirect()->route('users.listAll');
+                } else {
+                    notify()->error('Erro ao editar Usuário !', 'Erro ao editar');
+                    return redirect()->route('users.listAll');
+                }
+            }
+        }
+    }
 
-        $user = User::find($request->id);
+    public function delete(Request $request)
+    {
+        $id = $request->id;
+
+        if (!User::find($id)) {
+            notify()->error('Usuário não encontrado', 'Error');
+            return redirect()->route('users.listAll');
+        } else {
+            return view('users.delete', ['id' => $id]);
+        }
+    }
+
+    public function destroy($id)
+    {
+        if (!User::find($id)) {
+            notify()->error('Usuário não encontrado', 'Error');
+            return redirect()->route('users.listAll');
+        } else {
+            if (User::find($id)->delete()) {
+                notify()->success('Usuário excluido', 'Excluido');
+                return redirect()->route('users.listAll');
+            } else {
+                notify()->error('Erro ao excluir usuário', 'Error');
+                return redirect()->route('users.listAll');
+            }
+        }
     }
 }

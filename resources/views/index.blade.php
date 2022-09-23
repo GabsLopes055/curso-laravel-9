@@ -43,7 +43,22 @@
             </div>
         </div>
     </div>
-
+    <br>
+    <div class="row text-center">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Consulta CEP</h4>
+                </div>
+                <div class="car-body">
+                    <p class="mt-2">Consulta de endereços dos usuários</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#"><button class="btn btn-outline-dark">Consultar</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 @endsection

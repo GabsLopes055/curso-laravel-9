@@ -44,7 +44,23 @@
             <ellipse cx="194.86" cy="372.3" rx="14.09" ry="26.42" fill="#fdb797" />
             <ellipse cx="497.8" cy="372.3" rx="14.09" ry="26.42" fill="#fdb797" />
         </svg>
-        <form action="{{ route('index') }}">
+        <form action="{{ route('auth.user') }}" method="POST">
+            @csrf
+            @method('POST')
+            <div class="container w-50 mt-5">
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-warning alert-dismissible fade show me-5" role="alert"
+                            style="height: 50px">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <ol>
+                                <li>{{ $error }}</li>
+
+                            </ol>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
             <div class="mt-5">
                 <div class="mt-3">
                     <h5 class="mt-3" for="form-label">E-mail</h5>

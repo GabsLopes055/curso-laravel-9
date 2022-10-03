@@ -17,8 +17,13 @@ class userController extends Controller
 
     public function listAll(Request $request)
     {
-        $users = User::get();
-        dd($request->search);
+        if ($request->search != '') {
+            $users = User::where("name", "LIKE", "%{$request->search}%")->get();
+            // dd($users);
+        } else {
+            $users = User::get();
+        }
+        // dd($request->search);
 
         return view('users.listUser', ['users' => $users]);
     }

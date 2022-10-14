@@ -28,7 +28,8 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return view('index');
+            $user = Auth::user();
+            return view('index', compact('user'));
         } else {
             notify()->warning('O usuário informado não existe na base de dados !', 'Usuário não encontrado');
             return back();

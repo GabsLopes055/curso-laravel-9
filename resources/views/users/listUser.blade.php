@@ -5,7 +5,7 @@
 @section('content')
     <h1 class="text-center">Listagem dos Usuários</h1>
 
-    <form action="{{route('users.listAll')}}" method="get" class="mt-4">
+    <form action="{{ route('users.listAll') }}" method="get" class="mt-4">
         <div class="row">
             <div class="col-11">
                 <input class="form-control" type="text" name="search" placeholder="Pesquisar" autocomplete="off">
@@ -40,6 +40,9 @@
                             class="btn btn-outline-warning text-dark">Editar</a></td>
                     <td><a href="{{ route('users.delete', ['id' => $user->id]) }}"
                             class="btn btn-outline-danger">Excluir</a>
+                    </td>
+                    <td><a href="{{ route('comments.index', $user->id) }}"
+                            class="btn btn-light">Anotações (0)</a>
                     </td>
                 </tr>
             @endforeach

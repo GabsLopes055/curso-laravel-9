@@ -10,6 +10,14 @@ use App\Http\Controllers\notify;
 
 class userController extends Controller
 {
+
+    protected $model;
+
+    public function __construct(User $user)
+    {
+        $this->model = $user;
+    }
+
     public function index()
     {
         return view('index');
@@ -17,13 +25,15 @@ class userController extends Controller
 
     public function listAll(Request $request)
     {
-        if ($request->search != '') {
-            $users = User::where("name", "LIKE", "%{$request->search}%")->get();
-            // dd($users);
-        } else {
-            $users = User::get();
-        }
-        // dd($request->search);
+        // $search = $request->search;
+        $users = $this->model->getUsers(search: $request->get('search', ''));
+        // if ($request->search != '') {
+        //     $users = User::where("name", "LIKE", "%{$request->search}%")->get();
+        //     // dd($users);
+        // } else {
+        //     $users = User::get();
+        // }
+        // // dd($request->search);
 
         return view('users.listUser', ['users' => $users]);
     }
@@ -83,9 +93,9 @@ class userController extends Controller
             return redirect()->route('users.listAll');
         } else {
             $data = $request->only('name', 'email');
+
             if ($request->password) {
                 $data['password'] = bcrypt($request->password);
-            } else {
                 if ($user->update($data)) {
                     notify()->warning('Usuário editado com sucesso !', 'Usuário Editado');
                     return redirect()->route('users.listAll');
@@ -93,6 +103,9 @@ class userController extends Controller
                     notify()->error('Erro ao editar Usuário !', 'Erro ao editar');
                     return redirect()->route('users.listAll');
                 }
+            } else {
+                notify()->error('Erro ao editar Usuário !', 'Erro ao editar');
+                return redirect()->route('users.listAll');
             }
         }
     }

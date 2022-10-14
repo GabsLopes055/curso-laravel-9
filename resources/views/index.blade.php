@@ -48,7 +48,7 @@
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <h4>Consulta CEP</h4>
+                    <h4>Cadastrar Endereço</h4>
                 </div>
                 <div class="car-body">
                     <p class="mt-2">Consulta de endereços dos usuários</p>
